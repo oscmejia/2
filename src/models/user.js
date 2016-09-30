@@ -24,8 +24,7 @@ let UserSchema = new Schema({
     },
     address_2: {
         type: String,
-        minlength: [2, "Address 2 should be type at least 2 characters"],
-        required: [true, "Address 2 is required"]
+        required: false
     },
     city: {
         type: String,
@@ -52,7 +51,13 @@ let UserSchema = new Schema({
         min: [1000, 'Invalid zipcode plus4'],
         max: 9999
     }
-});
+},
+    {
+        timestamps: {
+            createdAt: 'created_at',
+            updatedAt: 'updated_at'
+        }
+    });
 
 let User = mongoose.model('users', UserSchema);
 
